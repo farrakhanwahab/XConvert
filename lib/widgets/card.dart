@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class XCard extends StatelessWidget {
+class AppCard extends StatelessWidget {
   final Widget child;
   final EdgeInsetsGeometry? padding;
   final VoidCallback? onTap;
   final Color? color;
 
-  const XCard({
+  const AppCard({
     super.key,
     required this.child,
     this.padding,

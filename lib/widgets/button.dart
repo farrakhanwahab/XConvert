@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-enum XButtonType { primary, secondary, outlined }
+enum AppButtonType { primary, secondary, outlined }
 
-class XButton extends StatelessWidget {
+class AppButton extends StatelessWidget {
   final String label;
   final VoidCallback? onPressed;
-  final XButtonType type;
+  final AppButtonType type;
   final IconData? icon;
   final bool fullWidth;
 
-  const XButton({
+  const AppButton({
     super.key,
     required this.label,
     this.onPressed,
-    this.type = XButtonType.primary,
+    this.type = AppButtonType.primary,
     this.icon,
     this.fullWidth = false,
   });
@@ -32,19 +32,19 @@ class XButton extends StatelessWidget {
           );
     Widget button;
     switch (type) {
-      case XButtonType.primary:
+      case AppButtonType.primary:
         button = ElevatedButton(
           onPressed: onPressed,
           child: child,
         );
         break;
-      case XButtonType.secondary:
+      case AppButtonType.secondary:
         button = FilledButton.tonal(
           onPressed: onPressed,
           child: child,
         );
         break;
-      case XButtonType.outlined:
+      case AppButtonType.outlined:
         button = OutlinedButton(
           onPressed: onPressed,
           child: child,

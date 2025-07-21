@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
-import '../widgets/x_card.dart';
 import '../app_theme.dart';
+import 'currency_converter_screen.dart';
+import 'length_converter_screen.dart';
+import 'weight_converter_screen.dart';
+import 'temperature_converter_screen.dart';
+import 'area_converter_screen.dart';
+import 'volume_converter_screen.dart';
+import 'speed_converter_screen.dart';
+import 'time_converter_screen.dart';
+import 'energy_converter_screen.dart';
+import 'power_converter_screen.dart';
+import 'data_converter_screen.dart';
+import 'frequency_converter_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -14,7 +25,7 @@ class HomeScreen extends StatelessWidget {
         'icon': Icons.currency_exchange,
         'color': scheme.surface,
         'iconColor': Colors.blueAccent,
-        'type': 'currency',
+        'screen': const CurrencyConverterScreen(),
         'desc': 'Convert between 150+ world currencies with live rates.',
       },
       {
@@ -22,7 +33,7 @@ class HomeScreen extends StatelessWidget {
         'icon': Icons.straighten,
         'color': scheme.surface,
         'iconColor': Colors.green,
-        'type': 'length',
+        'screen': const LengthConverterScreen(),
         'desc': 'Meters, feet, inches, and more.',
       },
       {
@@ -30,7 +41,7 @@ class HomeScreen extends StatelessWidget {
         'icon': Icons.monitor_weight,
         'color': scheme.surface,
         'iconColor': Colors.brown,
-        'type': 'weight',
+        'screen': const WeightConverterScreen(),
         'desc': 'Kilograms, pounds, ounces, and more.',
       },
       {
@@ -38,41 +49,120 @@ class HomeScreen extends StatelessWidget {
         'icon': Icons.thermostat,
         'color': scheme.surface,
         'iconColor': Colors.deepOrangeAccent,
-        'type': 'temperature',
+        'screen': const TemperatureConverterScreen(),
         'desc': 'Celsius, Fahrenheit, Kelvin, and more.',
+      },
+      {
+        'title': 'Area',
+        'icon': Icons.crop_square,
+        'color': AppTheme.areaGreen.withAlpha(20),
+        'iconColor': AppTheme.areaGreen,
+        'screen': const AreaConverterScreen(),
+        'desc': 'Square meters, acres, hectares, and more.',
+      },
+      {
+        'title': 'Volume',
+        'icon': Icons.local_drink,
+        'color': AppTheme.volumeIndigo.withAlpha(20),
+        'iconColor': AppTheme.volumeIndigo,
+        'screen': const VolumeConverterScreen(),
+        'desc': 'Liters, gallons, cups, and more.',
+      },
+      {
+        'title': 'Speed',
+        'icon': Icons.speed,
+        'color': AppTheme.speedPurple.withAlpha(20),
+        'iconColor': AppTheme.speedPurple,
+        'screen': const SpeedConverterScreen(),
+        'desc': 'Meters/sec, km/h, mph, knots, and more.',
+      },
+      {
+        'title': 'Time',
+        'icon': Icons.access_time,
+        'color': AppTheme.timeOrange.withAlpha(20),
+        'iconColor': AppTheme.timeOrange,
+        'screen': const TimeConverterScreen(),
+        'desc': 'Seconds, minutes, hours, days, and more.',
+      },
+      {
+        'title': 'Energy',
+        'icon': Icons.bolt,
+        'color': AppTheme.energyGreen.withAlpha(20),
+        'iconColor': AppTheme.energyGreen,
+        'screen': const EnergyConverterScreen(),
+        'desc': 'Joules, calories, kWh, BTU, and more.',
+      },
+      {
+        'title': 'Power',
+        'icon': Icons.flash_on,
+        'color': AppTheme.powerRed.withAlpha(20),
+        'iconColor': AppTheme.powerRed,
+        'screen': const PowerConverterScreen(),
+        'desc': 'Watts, kilowatts, horsepower, and more.',
+      },
+      {
+        'title': 'Data',
+        'icon': Icons.sd_storage,
+        'color': AppTheme.dataBlueGrey.withAlpha(20),
+        'iconColor': AppTheme.dataBlueGrey,
+        'screen': const DataConverterScreen(),
+        'desc': 'Bytes, KB, MB, GB, TB, and more.',
+      },
+      {
+        'title': 'Frequency',
+        'icon': Icons.waves,
+        'color': AppTheme.freqDeepOrange.withAlpha(20),
+        'iconColor': AppTheme.freqDeepOrange,
+        'screen': const FrequencyConverterScreen(),
+        'desc': 'Hertz, kHz, MHz, GHz.',
       },
     ];
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Unit Converter',
-          style: AppTheme.lightTheme.textTheme.titleLarge,
+          'XConvert',
+          style: Theme.of(context).textTheme.titleLarge,
         ),
         centerTitle: true,
         backgroundColor: scheme.primaryContainer,
         foregroundColor: scheme.onPrimary,
         elevation: 0,
       ),
-      body: Container(
-        color: scheme.surface,
-        child: ListView.separated(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-          itemCount: categories.length,
-          separatorBuilder: (_, __) => const SizedBox(height: 24),
-          itemBuilder: (context, i) {
-            final c = categories[i];
-            return CategoryCard(
-              icon: c['icon'] as IconData,
-              label: c['title'] as String,
-              color: c['color'] as Color,
-              iconColor: c['iconColor'] as Color,
-              description: c['desc'] as String,
-              onTap: () {
-                // TODO: Navigate to category screen
-              },
-            );
-          },
+      body: SafeArea(
+        child: CustomScrollView(
+          slivers: [
+            SliverPadding(
+              padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
+              sliver: SliverGrid(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
+                  childAspectRatio: 0.85,
+                ),
+                delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    final category = categories[index];
+                    return CategoryCard(
+                      icon: category['icon'] as IconData,
+                      label: category['title'] as String,
+                      color: category['color'] as Color,
+                      iconColor: category['iconColor'] as Color,
+                      description: category['desc'] as String,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => category['screen'] as Widget),
+                        );
+                      },
+                    );
+                  },
+                  childCount: categories.length,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -85,7 +175,7 @@ class CategoryCard extends StatelessWidget {
   final Color color;
   final Color iconColor;
   final String description;
-  final VoidCallback? onTap;
+  final VoidCallback onTap;
 
   const CategoryCard({
     super.key,
@@ -94,48 +184,60 @@ class CategoryCard extends StatelessWidget {
     required this.color,
     required this.iconColor,
     required this.description,
-    this.onTap,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return XCard(
-      padding: const EdgeInsets.symmetric(vertical: 28, horizontal: 24),
-      child: InkWell(
-        borderRadius: BorderRadius.circular(24),
-        onTap: onTap,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              backgroundColor: iconColor.withAlpha(33),
-              radius: 38,
-              child: Icon(icon, color: iconColor, size: 38),
+    final theme = Theme.of(context);
+    return InkWell(
+      borderRadius: BorderRadius.circular(24),
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 180),
+        curve: Curves.easeOut,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(24),
+          boxShadow: [
+            BoxShadow(
+              color: iconColor.withAlpha(25),
+              blurRadius: 16,
+              offset: const Offset(0, 8),
             ),
-            const SizedBox(width: 28),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    label,
-                    style: AppTheme.lightTheme.textTheme.titleLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: scheme.onSurface,
-                      fontSize: 22,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    description,
-                    style: AppTheme.lightTheme.textTheme.bodyLarge?.copyWith(
-                      color: scheme.onSurface.withAlpha(179),
-                      fontSize: 15,
-                    ),
-                  ),
-                ],
+          ],
+        ),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: iconColor.withAlpha(46),
               ),
+              padding: const EdgeInsets.all(18),
+              child: Icon(icon, color: iconColor, size: 36),
+            ),
+            const SizedBox(height: 18),
+            Text(
+              label,
+              style: theme.textTheme.titleLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+                color: Colors.black87,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: 10),
+            Text(
+              description,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                color: Colors.black54,
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
           ],
         ),

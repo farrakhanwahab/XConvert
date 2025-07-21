@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class XDropdown<T> extends StatelessWidget {
+class AppDropdown<T> extends StatelessWidget {
   final String label;
   final T? value;
   final List<DropdownMenuItem<T>> items;
   final ValueChanged<T?>? onChanged;
   final IconData? icon;
 
-  const XDropdown({
+  const AppDropdown({
     super.key,
     required this.label,
     required this.value,
@@ -22,6 +22,7 @@ class XDropdown<T> extends StatelessWidget {
       value: value,
       items: items,
       onChanged: onChanged,
+      isExpanded: true,
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: icon != null ? Icon(icon) : null,

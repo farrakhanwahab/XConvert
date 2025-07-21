@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class XInput extends StatelessWidget {
+class AppInput extends StatelessWidget {
   final String label;
   final String? hint;
   final TextEditingController? controller;
@@ -9,7 +9,7 @@ class XInput extends StatelessWidget {
   final IconData? icon;
   final ValueChanged<String>? onChanged;
 
-  const XInput({
+  const AppInput({
     super.key,
     required this.label,
     this.hint,
