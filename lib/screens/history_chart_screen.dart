@@ -65,110 +65,120 @@ class _HistoryChartScreenState extends State<HistoryChartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Currency History'),
-        backgroundColor: Theme.of(context).colorScheme.primary,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                DropdownButton<String>(
-                  value: _fromCurrency,
-                  items: _currencies
-                      .map((c) => DropdownMenuItem(value: c, child: Text(c)))
-                      .toList(),
-                  onChanged: (val) {
-                    if (val != null) {
-                      setState(() {
-                        _fromCurrency = val;
-                      });
-                    }
-                  },
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              DropdownButton<String>(
+                value: _fromCurrency,
+                items: _currencies
+                    .map((c) => DropdownMenuItem(value: c, child: Text(c)))
+                    .toList(),
+                onChanged: (val) {
+                  if (val != null) {
+                    setState(() {
+                      _fromCurrency = val;
+                    });
+                  }
+                },
+              ),
+              const Icon(Icons.arrow_forward),
+              DropdownButton<String>(
+                value: _toCurrency,
+                items: _currencies
+                    .map((c) => DropdownMenuItem(value: c, child: Text(c)))
+                    .toList(),
+                onChanged: (val) {
+                  if (val != null) {
+                    setState(() {
+                      _toCurrency = val;
+                    });
+                  }
+                },
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              TextButton(
+                onPressed: () async {
+                  final picked = await showDatePicker(
+                    context: context,
+                    initialDate: _startDate,
+                    firstDate: DateTime(2000),
+                    lastDate: _endDate,
+                  );
+                  if (picked != null) {
+                    setState(() {
+                      _startDate = picked;
+                    });
+                  }
+                },
+                child: Text(
+                  'From: ${_startDate.toLocal().toString().split(' ')[0]}',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
-                const Icon(Icons.arrow_forward),
-                DropdownButton<String>(
-                  value: _toCurrency,
-                  items: _currencies
-                      .map((c) => DropdownMenuItem(value: c, child: Text(c)))
-                      .toList(),
-                  onChanged: (val) {
-                    if (val != null) {
-                      setState(() {
-                        _toCurrency = val;
-                      });
-                    }
-                  },
+              ),
+              TextButton(
+                onPressed: () async {
+                  final picked = await showDatePicker(
+                    context: context,
+                    initialDate: _endDate,
+                    firstDate: _startDate,
+                    lastDate: DateTime.now(),
+                  );
+                  if (picked != null) {
+                    setState(() {
+                      _endDate = picked;
+                    });
+                  }
+                },
+                child: Text(
+                  'To: ${_endDate.toLocal().toString().split(' ')[0]}',
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
+                    decoration: TextDecoration.underline,
+                  ),
                 ),
-              ],
+              ),
+            ],
+          ),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: _fetchHistoricalData,
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Theme.of(context).colorScheme.primary,
+              foregroundColor: Colors.white,
             ),
-            const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                TextButton(
-                  onPressed: () async {
-                    final picked = await showDatePicker(
-                      context: context,
-                      initialDate: _startDate,
-                      firstDate: DateTime(2000),
-                      lastDate: _endDate,
-                    );
-                    if (picked != null) {
-                      setState(() {
-                        _startDate = picked;
-                      });
-                    }
-                  },
-                  child: Text('From: ${_startDate.toLocal().toString().split(' ')[0]}'),
-                ),
-                TextButton(
-                  onPressed: () async {
-                    final picked = await showDatePicker(
-                      context: context,
-                      initialDate: _endDate,
-                      firstDate: _startDate,
-                      lastDate: DateTime.now(),
-                    );
-                    if (picked != null) {
-                      setState(() {
-                        _endDate = picked;
-                      });
-                    }
-                  },
-                  child: Text('To: ${_endDate.toLocal().toString().split(' ')[0]}'),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _fetchHistoricalData,
-              child: const Text('Get History'),
-            ),
-            const SizedBox(height: 24),
-            _isLoading
-                ? const CircularProgressIndicator()
-                : _historicalData.isEmpty
-                    ? const Text('No data available')
-                    : Expanded(
-                        child: LineChart(
-                          LineChartData(
-                            lineBarsData: [_lineChartBarData()],
-                            titlesData: FlTitlesData(
-                              bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                              leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: true)),
-                              topTitles: AxisTitles(sideTitles: SideTitles(showTitles:false)),
-                              rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                            ),
+            child: const Text('Get History'),
+          ),
+          const SizedBox(height: 24),
+          _isLoading
+              ? const CircularProgressIndicator()
+              : _historicalData.isEmpty
+                  ? const Text('No data available')
+                  : Expanded(
+                      child: LineChart(
+                        LineChartData(
+                          lineBarsData: [_lineChartBarData()],
+                          titlesData: FlTitlesData(
+                            bottomTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                            leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: true)),
+                            topTitles: AxisTitles(sideTitles: SideTitles(showTitles:false)),
+                            rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
                           ),
                         ),
                       ),
-          ],
-        ),
+                    ),
+        ],
       ),
     );
   }
