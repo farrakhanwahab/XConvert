@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/input.dart';
 import '../widgets/dropdown.dart';
-import 'package:meta/meta.dart';
 
 abstract class BaseConverterScreen extends StatefulWidget {
   final String title;

@@ -1,241 +1,183 @@
 import 'package:flutter/material.dart';
-import '../app_theme.dart';
-import 'currency_converter_screen.dart';
-import 'length_converter_screen.dart';
-import 'weight_converter_screen.dart';
-import 'temperature_converter_screen.dart';
-import 'area_converter_screen.dart';
-import 'volume_converter_screen.dart';
-import 'speed_converter_screen.dart';
-import 'time_converter_screen.dart';
-import 'energy_converter_screen.dart';
-import 'power_converter_screen.dart';
-import 'data_converter_screen.dart';
-import 'frequency_converter_screen.dart';
+import 'package:lucide_icons/lucide_icons.dart';
+import 'package:xconvert/screens/area_converter_screen.dart';
+import 'package:xconvert/screens/currency_converter_screen.dart';
+import 'package:xconvert/screens/data_converter_screen.dart';
+import 'package:xconvert/screens/energy_converter_screen.dart';
+import 'package:xconvert/screens/frequency_converter_screen.dart';
+import 'package:xconvert/screens/length_converter_screen.dart';
+import 'package:xconvert/screens/power_converter_screen.dart';
+import 'package:xconvert/screens/speed_converter_screen.dart';
+import 'package:xconvert/screens/temperature_converter_screen.dart';
+import 'package:xconvert/screens/time_converter_screen.dart';
+import 'package:xconvert/screens/volume_converter_screen.dart';
+import 'package:xconvert/screens/weight_converter_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final categories = [
-      {
-        'title': 'Currency',
-        'icon': Icons.currency_exchange,
-        'color': scheme.surface,
-        'iconColor': Colors.blueAccent,
-        'screen': const CurrencyConverterScreen(),
-        'desc': 'Convert between 150+ world currencies with live rates.',
-      },
-      {
-        'title': 'Length',
-        'icon': Icons.straighten,
-        'color': scheme.surface,
-        'iconColor': Colors.green,
-        'screen': const LengthConverterScreen(),
-        'desc': 'Meters, feet, inches, and more.',
-      },
-      {
-        'title': 'Weight',
-        'icon': Icons.monitor_weight,
-        'color': scheme.surface,
-        'iconColor': Colors.brown,
-        'screen': const WeightConverterScreen(),
-        'desc': 'Kilograms, pounds, ounces, and more.',
-      },
-      {
-        'title': 'Temperature',
-        'icon': Icons.thermostat,
-        'color': scheme.surface,
-        'iconColor': Colors.deepOrangeAccent,
-        'screen': const TemperatureConverterScreen(),
-        'desc': 'Celsius, Fahrenheit, Kelvin, and more.',
-      },
-      {
-        'title': 'Area',
-        'icon': Icons.crop_square,
-        'color': AppTheme.areaGreen.withAlpha(20),
-        'iconColor': AppTheme.areaGreen,
-        'screen': const AreaConverterScreen(),
-        'desc': 'Square meters, acres, hectares, and more.',
-      },
-      {
-        'title': 'Volume',
-        'icon': Icons.local_drink,
-        'color': AppTheme.volumeIndigo.withAlpha(20),
-        'iconColor': AppTheme.volumeIndigo,
-        'screen': const VolumeConverterScreen(),
-        'desc': 'Liters, gallons, cups, and more.',
-      },
-      {
-        'title': 'Speed',
-        'icon': Icons.speed,
-        'color': AppTheme.speedPurple.withAlpha(20),
-        'iconColor': AppTheme.speedPurple,
-        'screen': const SpeedConverterScreen(),
-        'desc': 'Meters/sec, km/h, mph, knots, and more.',
-      },
-      {
-        'title': 'Time',
-        'icon': Icons.access_time,
-        'color': AppTheme.timeOrange.withAlpha(20),
-        'iconColor': AppTheme.timeOrange,
-        'screen': const TimeConverterScreen(),
-        'desc': 'Seconds, minutes, hours, days, and more.',
-      },
-      {
-        'title': 'Energy',
-        'icon': Icons.bolt,
-        'color': AppTheme.energyGreen.withAlpha(20),
-        'iconColor': AppTheme.energyGreen,
-        'screen': const EnergyConverterScreen(),
-        'desc': 'Joules, calories, kWh, BTU, and more.',
-      },
-      {
-        'title': 'Power',
-        'icon': Icons.flash_on,
-        'color': AppTheme.powerRed.withAlpha(20),
-        'iconColor': AppTheme.powerRed,
-        'screen': const PowerConverterScreen(),
-        'desc': 'Watts, kilowatts, horsepower, and more.',
-      },
-      {
-        'title': 'Data',
-        'icon': Icons.sd_storage,
-        'color': AppTheme.dataBlueGrey.withAlpha(20),
-        'iconColor': AppTheme.dataBlueGrey,
-        'screen': const DataConverterScreen(),
-        'desc': 'Bytes, KB, MB, GB, TB, and more.',
-      },
-      {
-        'title': 'Frequency',
-        'icon': Icons.waves,
-        'color': AppTheme.freqDeepOrange.withAlpha(20),
-        'iconColor': AppTheme.freqDeepOrange,
-        'screen': const FrequencyConverterScreen(),
-        'desc': 'Hertz, kHz, MHz, GHz.',
-      },
-    ];
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'XConvert',
-          style: Theme.of(context).textTheme.titleLarge,
-        ),
-        centerTitle: true,
-        backgroundColor: scheme.primaryContainer,
-        foregroundColor: scheme.onPrimary,
-        elevation: 0,
-      ),
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: [
-            SliverPadding(
-              padding: const EdgeInsets.fromLTRB(16, 24, 16, 24),
-              sliver: SliverGrid(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
-                  childAspectRatio: 0.85,
-                ),
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    final category = categories[index];
-                    return CategoryCard(
-                      icon: category['icon'] as IconData,
-                      label: category['title'] as String,
-                      color: category['color'] as Color,
-                      iconColor: category['iconColor'] as Color,
-                      description: category['desc'] as String,
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (_) => category['screen'] as Widget),
-                        );
-                      },
-                    );
-                  },
-                  childCount: categories.length,
-                ),
-              ),
+    final categories = _buildCategories(context);
+    return CustomScrollView(
+      slivers: [
+        SliverPadding(
+          padding: const EdgeInsets.all(16.0),
+          sliver: SliverGrid(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 16.0,
+              mainAxisSpacing: 16.0,
+              childAspectRatio: 1.2,
             ),
-          ],
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return CategoryCard(category: categories[index]);
+              },
+              childCount: categories.length,
+            ),
+          ),
         ),
-      ),
+      ],
     );
+  }
+
+  List<Category> _buildCategories(BuildContext context) {
+    return [
+      Category(
+          name: 'Currency',
+          icon: LucideIcons.dollarSign,
+          screen: const CurrencyConverterScreen(),
+          color: Colors.orange,
+          description: 'Live exchange rates'),
+      Category(
+          name: 'Length',
+          icon: LucideIcons.ruler,
+          screen: const LengthConverterScreen(),
+          color: Colors.blue,
+          description: 'Meters, feet, miles...'),
+      Category(
+          name: 'Weight',
+          icon: LucideIcons.scale,
+          screen: const WeightConverterScreen(),
+          color: Colors.red,
+          description: 'Kilograms, pounds...'),
+      Category(
+          name: 'Temperature',
+          icon: LucideIcons.thermometer,
+          screen: const TemperatureConverterScreen(),
+          color: Colors.purple,
+          description: 'Celsius, Fahrenheit...'),
+      Category(
+          name: 'Area',
+          icon: LucideIcons.square,
+          screen: const AreaConverterScreen(),
+          color: Colors.green,
+          description: 'Square meters, acres...'),
+      Category(
+          name: 'Volume',
+          icon: LucideIcons.box,
+          screen: const VolumeConverterScreen(),
+          color: Colors.cyan,
+          description: 'Liters, gallons...'),
+      Category(
+          name: 'Speed',
+          icon: LucideIcons.gauge,
+          screen: const SpeedConverterScreen(),
+          color: Colors.lightBlue,
+          description: 'Km/h, mph...'),
+      Category(
+          name: 'Time',
+          icon: LucideIcons.clock,
+          screen: const TimeConverterScreen(),
+          color: Colors.amber,
+          description: 'Seconds, minutes, hours...'),
+      Category(
+          name: 'Energy',
+          icon: LucideIcons.zap,
+          screen: const EnergyConverterScreen(),
+          color: Colors.lime,
+          description: 'Joules, calories...'),
+      Category(
+          name: 'Power',
+          icon: LucideIcons.activity,
+          screen: const PowerConverterScreen(),
+          color: Colors.yellow,
+          description: 'Watts, horsepower...'),
+      Category(
+          name: 'Data',
+          icon: LucideIcons.database,
+          screen: const DataConverterScreen(),
+          color: Colors.grey,
+          description: 'Bytes, kilobytes...'),
+      Category(
+          name: 'Frequency',
+          icon: LucideIcons.radio,
+          screen: const FrequencyConverterScreen(),
+          color: Colors.pink,
+          description: 'Hertz, gigahertz...'),
+    ];
   }
 }
 
-class CategoryCard extends StatelessWidget {
+class Category {
+  final String name;
   final IconData icon;
-  final String label;
+  final Widget screen;
   final Color color;
-  final Color iconColor;
   final String description;
-  final VoidCallback onTap;
 
-  const CategoryCard({
-    super.key,
+  Category({
+    required this.name,
     required this.icon,
-    required this.label,
+    required this.screen,
     required this.color,
-    required this.iconColor,
     required this.description,
-    required this.onTap,
   });
+}
+
+class CategoryCard extends StatelessWidget {
+  final Category category;
+
+  const CategoryCard({super.key, required this.category});
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return InkWell(
-      borderRadius: BorderRadius.circular(24),
-      onTap: onTap,
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => category.screen),
+        );
+      },
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 180),
-        curve: Curves.easeOut,
+        duration: const Duration(milliseconds: 200),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(24),
+          borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
-              color: iconColor.withAlpha(25),
-              blurRadius: 16,
-              offset: const Offset(0, 8),
+              color: Colors.black.withAlpha(12),
+              blurRadius: 10,
+              offset: const Offset(0, 5),
             ),
           ],
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: iconColor.withAlpha(46),
-              ),
-              padding: const EdgeInsets.all(18),
-              child: Icon(icon, color: iconColor, size: 36),
-            ),
-            const SizedBox(height: 18),
+            Icon(category.icon, size: 32, color: category.color),
+            const SizedBox(height: 12),
             Text(
-              label,
-              style: theme.textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
-              textAlign: TextAlign.center,
+              category.name,
+              style: Theme.of(context).textTheme.titleMedium,
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 4),
             Text(
-              description,
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: Colors.black54,
-                fontWeight: FontWeight.w500,
-              ),
-              textAlign: TextAlign.center,
+              category.description,
+              style: Theme.of(context).textTheme.bodySmall,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),

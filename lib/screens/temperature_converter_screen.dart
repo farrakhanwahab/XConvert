@@ -34,7 +34,6 @@ class _TemperatureConverterScreenState extends BaseConverterScreenState<Temperat
     }
   }
 
-  @override
   String getFormula() {
     if (fromUnit == 'Celsius' && toUnit == 'Fahrenheit') {
       return 'C × 9/5 + 32';
@@ -56,7 +55,7 @@ class _TemperatureConverterScreenState extends BaseConverterScreenState<Temperat
       return 'Standard temperature conversion';
     }
   }
-
+  @override
   Future<void> calculateResult() async {
     if (input.isEmpty) {
       setState(() => result = '');

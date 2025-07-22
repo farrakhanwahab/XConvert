@@ -67,9 +67,9 @@ class _CurrencyConverterScreenState extends BaseConverterScreenState<CurrencyCon
     }
   }
 
-  @override
   String getFormula() => 'value × (rate of $toUnit)';
 
+  @override
   Future<void> calculateResult() async {
     if (input.isEmpty) {
       setState(() => result = '');
