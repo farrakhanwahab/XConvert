@@ -40,6 +40,7 @@ class XConvertApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final fontScale = ref.watch(fontScaleProvider);
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'XConvert',
       theme: AppTheme.lightTheme(fontScale),
       darkTheme: AppTheme.darkTheme(fontScale),
