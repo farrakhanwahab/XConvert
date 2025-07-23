@@ -5,6 +5,7 @@ import 'package:xconvert/app_theme.dart';
 import 'package:xconvert/screens/history_chart_screen.dart';
 import 'package:xconvert/screens/home_screen.dart';
 import 'package:xconvert/widgets/app_drawer.dart';
+import 'package:xconvert/screens/splash_screen.dart';
 
 final fontScaleProvider =
     StateNotifierProvider<FontScaleNotifier, double>((ref) {
@@ -43,7 +44,11 @@ class XConvertApp extends ConsumerWidget {
       theme: AppTheme.lightTheme(fontScale),
       darkTheme: AppTheme.darkTheme(fontScale),
       themeMode: ThemeMode.system,
-      home: const MainScaffold(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SplashScreen(),
+        '/main': (context) => const MainScaffold(),
+      },
     );
   }
 }
