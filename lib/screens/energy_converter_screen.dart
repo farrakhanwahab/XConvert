@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'base_converter_screen.dart';
 import '../services/converter_service.dart';
-import '../app_theme.dart';
 
 class EnergyConverterScreen extends BaseConverterScreen {
   const EnergyConverterScreen({super.key})
       : super(
           title: 'Energy Converter',
           icon: Icons.bolt,
-          iconColor: AppTheme.energyGreen,
+          iconColor: Colors.teal,
         );
 
   @override

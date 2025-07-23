@@ -7,7 +7,7 @@ class LengthConverterScreen extends BaseConverterScreen {
       : super(
           title: 'Length Converter',
           icon: Icons.straighten,
-          iconColor: Colors.green,
+          iconColor: Colors.blue,
         );
 
   @override

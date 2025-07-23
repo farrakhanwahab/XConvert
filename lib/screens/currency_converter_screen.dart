@@ -8,7 +8,7 @@ class CurrencyConverterScreen extends BaseConverterScreen {
       : super(
           title: 'Currency Converter',
           icon: Icons.currency_exchange,
-          iconColor: Colors.blueAccent,
+          iconColor: Colors.orange,
         );
 
   @override

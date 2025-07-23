@@ -90,19 +90,19 @@ class HomeScreen extends StatelessWidget {
           name: 'Time',
           icon: LucideIcons.clock,
           screen: const TimeConverterScreen(),
-          color: Colors.amber,
+          color: Colors.deepOrangeAccent,
           description: 'Seconds, minutes, hours...'),
       Category(
           name: 'Energy',
           icon: LucideIcons.zap,
           screen: const EnergyConverterScreen(),
-          color: Colors.lime,
+          color: Colors.teal,
           description: 'Joules, calories...'),
       Category(
           name: 'Power',
           icon: LucideIcons.activity,
           screen: const PowerConverterScreen(),
-          color: Colors.yellow,
+          color: Colors.redAccent,
           description: 'Watts, horsepower...'),
       Category(
           name: 'Data',

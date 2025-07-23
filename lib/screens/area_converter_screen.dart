@@ -7,7 +7,7 @@ class AreaConverterScreen extends BaseConverterScreen {
       : super(
           title: 'Area Converter',
           icon: Icons.crop_square,
-          iconColor: Colors.teal,
+          iconColor: Colors.green,
         );
 
   @override

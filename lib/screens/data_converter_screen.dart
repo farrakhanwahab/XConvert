@@ -7,7 +7,7 @@ class DataConverterScreen extends BaseConverterScreen {
       : super(
           title: 'Data Converter',
           icon: Icons.sd_storage,
-          iconColor: Colors.blueGrey,
+          iconColor: Colors.grey,
         );
 
   @override

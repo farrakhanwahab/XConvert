@@ -7,7 +7,7 @@ class VolumeConverterScreen extends BaseConverterScreen {
       : super(
           title: 'Volume Converter',
           icon: Icons.local_drink,
-          iconColor: Colors.indigo,
+          iconColor: Colors.cyan,
         );
 
   @override

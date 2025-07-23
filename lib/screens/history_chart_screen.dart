@@ -75,7 +75,9 @@ class _HistoryChartScreenState extends State<HistoryChartScreen> {
               DropdownButton<String>(
                 value: _fromCurrency,
                 items: _currencies
-                    .map((c) => DropdownMenuItem(value: c, child: Text(c)))
+                    .map((c) => DropdownMenuItem(value: c, child: Builder(
+                      builder: (context) => Text(c, style: Theme.of(context).textTheme.bodyMedium),
+                    )))
                     .toList(),
                 onChanged: (val) {
                   if (val != null) {
@@ -89,7 +91,9 @@ class _HistoryChartScreenState extends State<HistoryChartScreen> {
               DropdownButton<String>(
                 value: _toCurrency,
                 items: _currencies
-                    .map((c) => DropdownMenuItem(value: c, child: Text(c)))
+                    .map((c) => DropdownMenuItem(value: c, child: Builder(
+                      builder: (context) => Text(c, style: Theme.of(context).textTheme.bodyMedium),
+                    )))
                     .toList(),
                 onChanged: (val) {
                   if (val != null) {

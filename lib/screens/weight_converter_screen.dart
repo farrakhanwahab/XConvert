@@ -7,7 +7,7 @@ class WeightConverterScreen extends BaseConverterScreen {
       : super(
           title: 'Weight Converter',
           icon: Icons.monitor_weight,
-          iconColor: Colors.brown,
+          iconColor: Colors.red,
         );
 
   @override

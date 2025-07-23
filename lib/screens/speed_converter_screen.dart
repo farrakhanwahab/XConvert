@@ -7,7 +7,7 @@ class SpeedConverterScreen extends BaseConverterScreen {
       : super(
           title: 'Speed Converter',
           icon: Icons.speed,
-          iconColor: Colors.deepPurple,
+          iconColor: Colors.lightBlue,
         );
 
   @override

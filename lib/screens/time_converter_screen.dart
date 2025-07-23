@@ -7,7 +7,7 @@ class TimeConverterScreen extends BaseConverterScreen {
       : super(
           title: 'Time Converter',
           icon: Icons.access_time,
-          iconColor: Colors.orange,
+          iconColor: Colors.deepOrangeAccent,
         );
 
   @override

@@ -7,7 +7,7 @@ class TemperatureConverterScreen extends BaseConverterScreen {
       : super(
           title: 'Temperature Converter',
           icon: Icons.thermostat,
-          iconColor: Colors.deepOrangeAccent,
+          iconColor: Colors.purple,
         );
 
   @override

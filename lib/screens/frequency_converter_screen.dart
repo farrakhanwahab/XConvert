@@ -7,7 +7,7 @@ class FrequencyConverterScreen extends BaseConverterScreen {
       : super(
           title: 'Frequency Converter',
           icon: Icons.waves,
-          iconColor: Colors.deepOrange,
+          iconColor: Colors.pink,
         );
 
   @override
