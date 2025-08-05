@@ -55,3 +55,10 @@ A comprehensive unit converter app built with Flutter that allows users to conve
 - fl_chart: Charts for currency history
 - lucide_icons: Icon set
 - shared_preferences: Local storage
+
+## API Details
+
+**Currency API:** Frankfurter API (api.frankfurter.app) - Free, no key required
+- Live exchange rates and historical data
+- Shows error message if unavailable
+- Other converters work offline
