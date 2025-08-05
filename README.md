@@ -9,7 +9,7 @@ A comprehensive unit converter app built with Flutter that allows users to conve
 - Currency conversion with live exchange rates
 - Length, weight, temperature, area, volume conversions
 - Speed, time, energy, power, data, frequency conversions
-- Animated splash screen
+- Animated splash screen with flag-like text animation
 - Dark and light theme support
 - Responsive design
 
@@ -58,7 +58,7 @@ A comprehensive unit converter app built with Flutter that allows users to conve
 
 ## API Details
 
-**Currency API:** Frankfurter API (api.frankfurter.app) - Free, no key required
+**Currency API:** [Frankfurter API](https://api.frankfurter.app) - Free, no key required
 - Live exchange rates and historical data
 - Shows error message if unavailable
 - Other converters work offline
