@@ -23,7 +23,6 @@ A comprehensive unit converter app built with Flutter that allows users to conve
 - Flutter SDK (3.8.1 or higher)
 - Dart SDK
 - Android Studio / VS Code
-- Git
 
 ### Installation
 
@@ -49,15 +48,6 @@ A comprehensive unit converter app built with Flutter that allows users to conve
 - Currency data is fetched from external APIs
 - Theme supports both light and dark modes
 - All converter screens inherit from BaseConverterScreen
-
-## Dependencies
-
-- flutter_riverpod: State management
-- http: API calls for currency rates
-- google_fonts: Typography
-- fl_chart: Charts for currency history
-- lucide_icons: Icon set
-- shared_preferences: Local storage
 
 ## API Details
 
