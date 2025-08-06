@@ -4,6 +4,10 @@ A comprehensive unit converter app built with Flutter that allows users to conve
 
 ![XConvert Banner](assets/images/app_banner.png)
 
+## Download & Try
+[**👉 Download XConvert_v1.0.0.apk**](https://github.com/farrakhanwahab/XConvert/releases/download/v1.0.0/XConvert_v1.0.0.apk)  
+*(SHA-256: `c2d103c2c4a1aa171f39e1742ef96c447b0abc2e41178f0d5ed1e0e8556cf4a3`)*
+
 ## Features
 
 - Currency conversion with live exchange rates
