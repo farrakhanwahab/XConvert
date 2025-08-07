@@ -5,7 +5,9 @@ A comprehensive unit converter app built with Flutter that allows users to conve
 ![XConvert Banner](assets/images/app_banner.png)
 
 ## Download & Try
-[**👉 Download XConvert_v1.0.0.apk**](https://github.com/farrakhanwahab/XConvert/releases/download/v1.0.0/XConvert_v1.0.0.apk)  
+<a href="https://github.com/farrakhanwahab/XConvert/releases/download/v1.0.0/XConvert_v1.0.0.apk">
+  <img src="https://img.shields.io/badge/Download-APK%20v1.0.0-3DDC84?style=for-the-badge&logo=android&logoColor=white" alt="Download APK">
+</a>
 
 ## Features
 
